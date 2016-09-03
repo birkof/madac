@@ -24,5 +24,12 @@
 }
 
 .measurement.item {
-    margin:5px;
+    margin: 5px;
+}
+
+.connection.status {
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    z-index: 9;
 }

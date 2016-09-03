@@ -1,0 +1,10 @@
+.main.icon.header {
+    font-size: 40px;
+    font-weight: normal;
+}
+
+.measurements.alternate.stripe{
+    margin-top:50px;
+    border-top: 1px solid rgba(34,36,38,.15);
+    background-color: #F2F3F5 !important;  
+}

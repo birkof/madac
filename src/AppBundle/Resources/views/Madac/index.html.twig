@@ -75,7 +75,7 @@
     </div>
 
     <div class="ui container">
-        <div class="ui divided measurements log large list">
+        <div id="measurements-list" class="ui divided measurements log large list">
             <div class="measurement item">
                 <img class="left floated image" src="./images/box.png">
                 <div class="left floated barcode content">
@@ -134,5 +134,7 @@
     <script src="{{ asset('vendor/semantic_ui/dist/semantic.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery.slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/ClientSocket.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/ClientSocket.js') }}"></script>
+    <script src="{{ asset('js/MeasurementItem.js') }}"></script>
+    <script src="{{ asset('js/MeasurementsList.js') }}"></script>
 {% endblock %}

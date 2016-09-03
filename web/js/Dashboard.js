@@ -12,7 +12,11 @@ Dashboard.prototype.setMeasurements = function (width, length, height) {
     this.widthContainer.text(width);
     this.lengthContainer.text(length);
     this.heightContainer.text(height);
-    this.volumeContainer.text(width * length * height);
+    this.volumeContainer.text(this.computeVolume(width, length, height));
+};
+
+Dashboard.prototype.computeVolume = function (width, length, height) {
+    return width * length * height;
 };
 
 Dashboard.prototype.setConnectionStatus = function (status) {

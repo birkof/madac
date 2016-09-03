@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Measurement
 {
+    const REPOSITORY = 'AppBundle:Measurement';
     /**
      * @var int
      *

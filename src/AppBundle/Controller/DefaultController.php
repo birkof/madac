@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Response\Json\ErrorApiResponse;
+use AppBundle\Response\Json\SuccessApiResponse;
 use AppBundle\Service\MeasurementService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -34,20 +36,25 @@ class DefaultController extends Controller
         try {
             $measurementService->saveMeasurement(json_decode($request->getContent(), true));
         } catch (\InvalidArgumentException $ex) {
-            return new JsonResponse(
-                [
-                    'isError'   =>  true,
-                    'message'   =>  $ex->getMessage()
-                ],
-                Response::HTTP_BAD_REQUEST
-            );
+            return new ErrorApiResponse($ex->getMessage());
         }
 
-        return new JsonResponse(
-            [
-                'isError'   =>  false
-            ],
-            Response::HTTP_OK
-        );
+        return new SuccessApiResponse();
+
+
+    }
+
+    /**
+     * @Route("/measurements", name="get_measurements")
+     * @Method({"GET"})
+     * @param Request $request
+     * @return JsonResponse
+     */
+    function getMeasurements(Request $request)
+    {
+        /** @var MeasurementService $measurementService */
+        $measurementService = $this->get(MeasurementService::ID);
+
+        return new SuccessApiResponse($measurementService->getMeasurements());
     }
 }

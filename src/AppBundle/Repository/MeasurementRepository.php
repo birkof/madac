@@ -10,4 +10,8 @@ namespace AppBundle\Repository;
  */
 class MeasurementRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getAllMeasurements()
+    {
+        return $this->createQueryBuilder('m')->getQuery()->getArrayResult();
+    }
 }

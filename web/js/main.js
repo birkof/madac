@@ -23,9 +23,15 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function() {
     writeToScreen("DISCONNECTED");
 });
 
+$('#barcode').change(function(){
+    $(this).val($(this).val());
+});
 
 $('#barcode-form').on('submit', function(e) {
     e.preventDefault();
-    clientSocket.sendMessage("GET_MEASUREMENTS");
+    setTimeout(function(){
+        clientSocket.sendMessage("GET_MEASUREMENTS");
+    }, 300);
+
 
 });

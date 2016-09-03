@@ -2,6 +2,7 @@
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Measurement;
+use AppBundle\Repository\MeasurementRepository;
 use Doctrine\ORM\EntityManager;
 
 class MeasurementService
@@ -26,7 +27,7 @@ class MeasurementService
      * @param $data
      * @throws \InvalidArgumentException
      */
-    protected function validateInputData($data)
+    protected function validateSaveData($data)
     {
         if (empty($data) || !is_array($data)) {
             throw new \InvalidArgumentException("Empty or not an array provided");
@@ -63,7 +64,7 @@ class MeasurementService
      */
     public function saveMeasurement($data)
     {
-        $this->validateInputData($data);
+        $this->validateSaveData($data);
 
         $measurement = new Measurement();
 
@@ -74,5 +75,12 @@ class MeasurementService
 
         $this->entityManager->persist($measurement);
         $this->entityManager->flush();
+    }
+
+    public function getMeasurements()
+    {
+        /** @var MeasurementRepository $measurementsRepo */
+        $measurementsRepo = $this->entityManager->getRepository(Measurement::REPOSITORY);
+        return $measurementsRepo->getAllMeasurements();
     }
 }

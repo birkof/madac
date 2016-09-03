@@ -31,7 +31,7 @@ $('#barcode-form').on('submit', function(e) {
     e.preventDefault();
     setTimeout(function(){
         clientSocket.sendMessage("GET_MEASUREMENTS");
-    }, 300);
+    }, 1000);
 
 
 });

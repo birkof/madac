@@ -60,7 +60,7 @@
                         <div class="label">cube centimeters</div>
                     </div>
                     </p><h2 class="ui icon header">
-                        <img class="ui icon image" src="./images/x-ruler.png">Volume
+                        <img class="ui icon image" src="./images/box-volume.png">Volume
                     </h2>
                 </div>
             </div>
@@ -72,65 +72,57 @@
                 <input type="text" id="barcode" placeholder="Barcode" autofocus>
             </div>
         </form>
-
     </div>
-    <div class="ui center aligned items container">
-        <div class="ui items">
-            <div class="item">
-                <div class="ui tiny image">
-                    <img src="./images/height-ruler.png">
+
+    <div class="ui container">
+        <div class="ui divided measurements log large list">
+            <div class="measurement item">
+                <img class="left floated image" src="./images/box.png">
+                <div class="left floated barcode content">
+                    <div class="header">Snickerdoodle</div>
+                    Barcode
                 </div>
-                <div class="middle aligned content">
-                    <div class="header">
-                        Content A
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
-                    <div class="extra">
-                        <div class="ui right floated button">
-                            Action
-                        </div>
-                    </div>
+                <div class="left floated width content">
+                    <div class="header">26.4cm</div>
+                    Width
                 </div>
-            </div>
-            <div class="item">
-                <div class="ui tiny image">
-                    <img src="./images/height-ruler.png">
+                <div class="left floated length content">
+                    <div class="header">25.7cm</div>
+                    Length
                 </div>
-                <div class="middle aligned content">
-                    <div class="header">
-                        Content B
-                    </div>
-                    <div class="description">
-                        <p></p>
-                    </div>
-                    <div class="extra">
-                        <div class="ui right floated button">
-                            Action
-                        </div>
-                    </div>
+                <div class="left floated height content">
+                    <div class="header">69.47cm</div>
+                    Height
+                </div>
+                <div class="left floated volume content">
+                    <div class="header">69.47cm</div>
+                    Volume
                 </div>
             </div>
-            <div class="item">
-                <div class="ui tiny image">
-                    <img src="./images/height-ruler.png">
+            <div class="measurement item">
+                <img class="left floated image" src="./images/box.png">
+                <div class="left floated barcode content">
+                    <div class="header">Snickerdoodle</div>
+                    Barcode
                 </div>
-                
-                <div class="middle aligned content">
-                    <div class="header">
-                        Content C
-                    </div>
-                    <div class="description">
-                        <p>description</p>
-                    </div>
-                    <div class="extra">
-                        <div class="ui right floated button">
-                            Action
-                        </div>
-                    </div>
+                <div class="left floated width content">
+                    <div class="header">26.4cm</div>
+                    Width
+                </div>
+                <div class="left floated length content">
+                    <div class="header">25.7cm</div>
+                    Length
+                </div>
+                <div class="left floated height content">
+                    <div class="header">69.47cm</div>
+                    Height
+                </div>
+                <div class="left floated volume content">
+                    <div class="header">69.47cm</div>
+                    Volume
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -140,6 +132,7 @@
 {% block javascripts %}
     <script src="{{ asset('vendor/jquery/jquery-3.1.0.min.js') }}"></script>
     <script src="{{ asset('vendor/semantic_ui/dist/semantic.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery.slimscroll/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/ClientSocket.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 {% endblock %}

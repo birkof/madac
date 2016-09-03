@@ -11,5 +11,18 @@
 
 .search.container {
     width: 500px;
-    margin: 10px 0;
+    margin: 20px 0;
+}
+
+.measurements.log.container {
+    width: 500px;
+}
+
+.slimScrollDiv {
+    width: 500px !important;
+    margin: 0 auto;
+}
+
+.measurement.item {
+    margin:5px;
 }

@@ -8,18 +8,18 @@ function writeToScreen(message) {
 
 var clientSocket = new ClientSocket("ws://echo.websocket.org/");
 
-clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function(event) {
+clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function (event) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + event.data + '</span>');
     //AJAX
 });
 
-clientSocket.registerEventListener(ClientSocket.EVENT_ON_OPEN, function() {
+clientSocket.registerEventListener(ClientSocket.EVENT_ON_OPEN, function () {
     writeToScreen("CONNECTED");
 });
-clientSocket.registerEventListener(ClientSocket.EVENT_ON_ERROR, function(event) {
+clientSocket.registerEventListener(ClientSocket.EVENT_ON_ERROR, function (event) {
     writeToScreen('<span style="color: red;">ERROR:</span> ' + event.data);
 });
-clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function() {
+clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function () {
     writeToScreen("DISCONNECTED");
 });
 
@@ -27,7 +27,7 @@ $('#barcode').change(function(){
     $(this).val($(this).val());
 });
 
-$('#barcode-form').on('submit', function(e) {
+$('#barcode-form').on('submit', function (e) {
     e.preventDefault();
     setTimeout(function(){
         clientSocket.sendMessage("GET_MEASUREMENTS");
@@ -35,3 +35,5 @@ $('#barcode-form').on('submit', function(e) {
 
 
 });
+
+$('.measurements.log').slimScroll({height: '400px'});

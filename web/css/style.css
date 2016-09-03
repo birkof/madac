@@ -3,8 +3,13 @@
     font-weight: normal;
 }
 
-.measurements.alternate.stripe{
-    margin-top:50px;
-    border-top: 1px solid rgba(34,36,38,.15);
-    background-color: #F2F3F5 !important;  
+.measurements.alternate.stripe {
+    margin-top: 5px;
+    border-top: 1px solid rgba(34, 36, 38, .15);
+    background-color: #F2F3F5 !important;
+}
+
+.search.container {
+    width: 500px;
+    margin: 10px 0;
 }

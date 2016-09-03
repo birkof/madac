@@ -8,38 +8,20 @@
 
 {% block body %}
 
-    <div class="ui stackable center aligned grid container">
-        <div class="fourteen wide column">
-            <h1 class="ui main icon header">
-                <img class="ui inline icon image" src="./images/x-ruler.png"> Volumeter
-            </h1>
-        </div>
-    </div>
+    {#<div class="ui stackable center aligned grid container">#}
+    {#<div class="fourteen wide column">#}
+    {#<h1 class="ui main icon header">#}
+    {#<img class="ui inline icon image" src="./images/x-ruler.png"> Volumeter#}
+    {#</h1>#}
+    {#</div>#}
+    {#</div>#}
 
-    <div class="ui one column center aligned relaxed grid container">
-        <div class="ui card">
-            <div class="content">
-                <!--<div class="header">Volume</div>-->
-                <div class="description">
-                    <div class="ui huge large green statistic">
-                        <div class="value">
-                            10720
-                        </div>
-                        <div class="label">
-                            cube centimeters
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h2 class="ui icon header">Volume</h2>
-        </div>
-    </div>
     <div class="feature alternate ui stripe vertical measurements segment">
-        <div class="ui three column center aligned divided relaxed stackable grid container">
+        <div class="ui four column center aligned divided relaxed stackable grid container">
             <div class="row">
                 <div class="column">
                     <p>
-                    <div class="ui large teal statistic">
+                    <div class="ui teal statistic">
                         <div class="weight value">23.7</div>
                         <div class="label">centimeters</div>
                     </div>
@@ -50,7 +32,7 @@
 
                 <div class="column">
                     <p>
-                    <div class="ui large blue statistic">
+                    <div class="ui blue statistic">
                         <div class="length value">12.6</div>
                         <div class="label">centimeters</div>
                     </div>
@@ -63,7 +45,7 @@
 
                 <div class="column">
                     <p>
-                    <div class="ui large yellow statistic">
+                    <div class="ui yellow statistic">
                         <div class="height value">35.9</div>
                         <div class="label">centimeters</div>
                     </div>
@@ -71,10 +53,87 @@
                         <img class="ui icon image" src="./images/height-ruler.png">Height
                     </h2>
                 </div>
-
+                <div class="column">
+                    <p>
+                    <div class="ui large green statistic">
+                        <div class="value">10720</div>
+                        <div class="label">cube centimeters</div>
+                    </div>
+                    </p><h2 class="ui icon header">
+                        <img class="ui icon image" src="./images/x-ruler.png">Volume
+                    </h2>
+                </div>
             </div>
         </div>
     </div>
+    <div class="ui center aligned search container">
+        <form action="#" id="barcode-form">
+            <div class="ui large fluid input focus">
+                <input type="text" id="barcode" placeholder="Barcode">
+            </div>
+        </form>
+
+    </div>
+    <div class="ui center aligned items container">
+        <div class="ui items">
+            <div class="item">
+                <div class="ui tiny image">
+                    <img src="./images/height-ruler.png">
+                </div>
+                <div class="middle aligned content">
+                    <div class="header">
+                        Content A
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                    <div class="extra">
+                        <div class="ui right floated button">
+                            Action
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image">
+                    <img src="./images/height-ruler.png">
+                </div>
+                <div class="middle aligned content">
+                    <div class="header">
+                        Content B
+                    </div>
+                    <div class="description">
+                        <p></p>
+                    </div>
+                    <div class="extra">
+                        <div class="ui right floated button">
+                            Action
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ui tiny image">
+                    <img src="./images/height-ruler.png">
+                </div>
+                
+                <div class="middle aligned content">
+                    <div class="header">
+                        Content C
+                    </div>
+                    <div class="description">
+                        <p>description</p>
+                    </div>
+                    <div class="extra">
+                        <div class="ui right floated button">
+                            Action
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="output"></div>
 {% endblock %}
 

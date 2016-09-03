@@ -23,8 +23,16 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function (even
         dashboard.computeVolume(data.width, data.length, data.height)
     );
     measurementList.prependElement(listItem);
+    $.post({
+        url: '/measurement',
+        data: JSON.stringify({
+            ean: $('#barcode').val(),
+            width: data.width,
+            height: data.height,
+            length: data.length
+        })
+    });
     $('#barcode').val('');
-    //AJAX
 });
 
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_OPEN, function () {

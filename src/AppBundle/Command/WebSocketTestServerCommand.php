@@ -21,21 +21,24 @@ class WebSocketTestServerCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $socketServer = new Server(array('timeout' => 200, 'port' => 8080));
 
-        $output->writeln($socketServer->getPort(), "\n");
+        $socketServer = new Server(array('timeout' => 200, 'port' => 8080));
+        $output->writeln("Listening on port {$socketServer->getPort()}\n");
 
         while ($connection = $socketServer->accept()) {
             try {
                 while (1) {
                     $message = $socketServer->receive();
+                    $output->writeln("Received message $message");
 
                     if ($message == "GET_MEASUREMENTS") {
-                        $socketServer->send(json_encode(array(
-                            'width'  => rand(1, 5),
-                            'height' => rand(1, 5),
-                            'length' => rand(1, 5),
-                        )));
+                        $messageToSend = json_encode(array(
+                            'width'     =>  rand(1, 5),
+                            'height'    =>  rand(1, 5),
+                            'length'    =>  rand(1, 5)
+                        ));
+                        $socketServer->send($messageToSend);
+                        $output->writeln("Sent message $messageToSend\n");
                     }
                 }
             } catch (\WebSocket\ConnectionException $ex) {

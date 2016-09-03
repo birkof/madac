@@ -68,6 +68,7 @@ class MeasurementService
 
         $repo = $this->entityManager->getRepository(Measurement::REPOSITORY);
         $measurement = $repo->findBy(['ean' =>  $data['ean']]);
+        $measurement = reset($measurement);
 
         if (!$measurement) {
             $measurement = new Measurement();

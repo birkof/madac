@@ -47,7 +47,7 @@ class Measurement
     /**
      * @var int
      *
-     * @ORM\Column(name="ean", type="integer")
+     * @ORM\Column(name="ean", type="string")
      */
     private $ean;
 

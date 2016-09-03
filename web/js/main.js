@@ -9,7 +9,7 @@ function writeToScreen(message) {
 var dashboard = new Dashboard();
 var measurementList = new MeasurementsList();
 // var clientSocket = new ClientSocket("ws://echo.websocket.org/");
-var clientSocket = new ClientSocket("ws://192.168.160.75:8000/");
+var clientSocket = new ClientSocket("ws://192.168.160.75:8080/");
 
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function (event) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + event.data + '</span>');
@@ -37,7 +37,7 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_ERROR, function (event)
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function () {
     writeToScreen("DISCONNECTED");
     dashboard.setConnectionStatus(false);
-    clientSocket = new ClientSocket("ws://192.168.160.75:8000/");
+    clientSocket = new ClientSocket("ws://192.168.160.75:8081/");
 });
 
 $('#barcode-form').on('submit', function (e) {
@@ -47,4 +47,4 @@ $('#barcode-form').on('submit', function (e) {
     }, 1000);
 });
 
-$('.measurements.log').slimScroll({height: '400px'});
+$('.measurements.log').slimScroll({height: '600px'});

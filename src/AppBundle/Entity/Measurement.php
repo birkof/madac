@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Measurement
 {
     const REPOSITORY = 'AppBundle:Measurement';
+
     /**
      * @var int
      *
@@ -50,6 +51,12 @@ class Measurement
      */
     private $ean;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="volume", type="integer")
+     */
+    private $volume;
 
     /**
      * Get id
@@ -155,6 +162,24 @@ class Measurement
     public function getEan()
     {
         return $this->ean;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @param int $volume
+     * @return Measurement
+     */
+    public function setVolume($volume)
+    {
+        $this->volume = $volume;
+        return $this;
     }
 }
 

@@ -34,7 +34,7 @@ class DefaultController extends Controller
         $measurementService = $this->get(MeasurementService::ID);
 
         try {
-            $measurementService->saveMeasurement(json_decode($request->getContent(), true));
+            $measurementService->updateOrInsertMeasurement(json_decode($request->getContent(), true));
         } catch (\InvalidArgumentException $ex) {
             return new ErrorApiResponse($ex->getMessage());
         }

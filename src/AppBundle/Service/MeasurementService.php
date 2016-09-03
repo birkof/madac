@@ -62,16 +62,23 @@ class MeasurementService
      * @param $data
      * @throws \InvalidArgumentException
      */
-    public function saveMeasurement($data)
+    public function updateOrInsertMeasurement($data)
     {
         $this->validateSaveData($data);
 
-        $measurement = new Measurement();
+        $repo = $this->entityManager->getRepository(Measurement::REPOSITORY);
+        $measurement = $repo->findBy(['ean' =>  $data['ean']]);
+
+        if (!$measurement) {
+            $measurement = new Measurement();
+        }
 
         $measurement->setEan($data['ean']);
         $measurement->setHeight($data['height']);
         $measurement->setWidth($data['width']);
         $measurement->setLength($data['length']);
+
+        $this->computeVolume($measurement);
 
         $this->entityManager->persist($measurement);
         $this->entityManager->flush();
@@ -82,5 +89,10 @@ class MeasurementService
         /** @var MeasurementRepository $measurementsRepo */
         $measurementsRepo = $this->entityManager->getRepository(Measurement::REPOSITORY);
         return $measurementsRepo->getAllMeasurements();
+    }
+
+    public function computeVolume(Measurement $measurement)
+    {
+        $measurement->setVolume($measurement->getHeight() * $measurement->getWidth() * $measurement->getLength());
     }
 }

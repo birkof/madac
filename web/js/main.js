@@ -3,7 +3,7 @@ function writeToScreen(message) {
     var pre = document.createElement("p");
     pre.style.wordWrap = "break-word";
     pre.innerHTML = message;
-    output.appendChild(pre);
+    $(output).prepend(pre);
 }
 
 var clientSocket = new ClientSocket("ws://echo.websocket.org/");
@@ -23,14 +23,11 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function () {
     writeToScreen("DISCONNECTED");
 });
 
-$('#barcode').change(function(){
-    $(this).val($(this).val());
-});
-
 $('#barcode-form').on('submit', function (e) {
     e.preventDefault();
     setTimeout(function(){
         clientSocket.sendMessage("GET_MEASUREMENTS");
+        $('#barcode').val('');
     }, 1000);
 
 

@@ -20,13 +20,20 @@ Dashboard.prototype.computeVolume = function (width, length, height) {
 };
 
 Dashboard.prototype.computeMetrics = function (sensorData) {
-    var initialLength = 148;
+    var initialLength = 146;
     var initialWidth = 98;
-    var initialHeight = 100;
+    var initialHeight = 99;
 
-    var length = initialLength - (sensorData.sens_length_1 + sensorData.sens_length_2);
-    var width = initialWidth - (sensorData.sens_width_1 + sensorData.sens_width_2);
+    var aux = sensorData.sens_length_2;
+    sensorData.sens_length_2 = sensorData.sens_width_1;
+    sensorData.sens_width_1 = aux;
+
+    var length = initialLength - sensorData.sens_length_1 - sensorData.sens_length_2;
+    var width = initialWidth - sensorData.sens_width_1 - sensorData.sens_width_2;
     var height = initialHeight - sensorData.sens_height_1;
+
+    length = Math.max(length, width);
+    width = Math.min(length, width);
 
     return {
         length: length,

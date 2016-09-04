@@ -16,6 +16,7 @@
 
 .measurements.log.container {
     width: 500px;
+    text-align: center;
 }
 
 .slimScrollDiv {
@@ -25,6 +26,7 @@
 
 .measurement.item {
     margin: 5px;
+    display: inline-block !important;
 }
 
 .connection.status {
@@ -32,4 +34,8 @@
     top: 25px;
     right: 50px;
     z-index: 9;
+}
+
+.horizontal.header.list .item {
+    font-size: 17px;
 }

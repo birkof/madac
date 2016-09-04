@@ -48,7 +48,7 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_ERROR, function (event)
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function () {
     writeToScreen("DISCONNECTED");
     dashboard.setConnectionStatus(false);
-    isError = false;
+    var isError = false;
     do {
         try {
             clientSocket = new ClientSocket(socketConectionUrl);
@@ -66,4 +66,3 @@ $('#barcode-form').on('submit', function (e) {
     }, 1000);
 });
 
-$('.measurements.log').slimScroll({height: '600px'});

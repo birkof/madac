@@ -1,5 +1,5 @@
 var MeasurementsList = function(){
-    this.$element = $('#measurements-list');
+    this.$element = $('#measurements-list table tbody');
 };
 
 MeasurementsList.prototype.$element = null;

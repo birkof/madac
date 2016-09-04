@@ -24,7 +24,7 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 #define TRIGGER_PIN5  15//D8
 
 const char* ssid     = "emag.net";
-const char* password = "parolapentrureteauawirelessemag";
+const char* password = "<aici e parola de la emag.net>";
 
 long Distance(long time)
 {

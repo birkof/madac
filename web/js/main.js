@@ -5,7 +5,8 @@ function writeToScreen(message) {
     pre.innerHTML = message;
     $(output).prepend(pre);
 }
-var socketConectionUrl = "ws://192.168.160.75:8080/";
+// var socketConectionUrl = "ws://192.168.211.80:81/";
+var socketConectionUrl = "ws://192.168.210.159:81/";
 var dashboard = new Dashboard();
 var measurementList = new MeasurementsList();
 // var clientSocket = new ClientSocket("ws://echo.websocket.org/");
@@ -14,6 +15,8 @@ var clientSocket = new ClientSocket(socketConectionUrl);
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function (event) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + event.data + '</span>');
     var data = JSON.parse(event.data);
+    console.log(data);
+    var data = dashboard.computeMetrics(data);
     dashboard.setMeasurements(data.width, data.length, data.height);
     var listItem = new MeasurementItem(
         $('#barcode').val(),

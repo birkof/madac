@@ -5,11 +5,11 @@ function writeToScreen(message) {
     pre.innerHTML = message;
     $(output).prepend(pre);
 }
-
+var socketConectionUrl = "ws://192.168.160.75:8080/";
 var dashboard = new Dashboard();
 var measurementList = new MeasurementsList();
 // var clientSocket = new ClientSocket("ws://echo.websocket.org/");
-var clientSocket = new ClientSocket("ws://192.168.160.75:8080/");
+var clientSocket = new ClientSocket(socketConectionUrl);
 
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_MESSAGE, function (event) {
     writeToScreen('<span style="color: blue;">RESPONSE: ' + event.data + '</span>');
@@ -45,7 +45,15 @@ clientSocket.registerEventListener(ClientSocket.EVENT_ON_ERROR, function (event)
 clientSocket.registerEventListener(ClientSocket.EVENT_ON_CLOSE, function () {
     writeToScreen("DISCONNECTED");
     dashboard.setConnectionStatus(false);
-    clientSocket = new ClientSocket("ws://192.168.160.75:8081/");
+    isError = false;
+    do {
+        try {
+            clientSocket = new ClientSocket(socketConectionUrl);
+            isError = false;
+        } catch (msg) {
+            isError = true;
+        }
+    } while (isError);
 });
 
 $('#barcode-form').on('submit', function (e) {

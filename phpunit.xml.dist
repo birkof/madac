@@ -14,13 +14,13 @@
 
     <testsuites>
         <testsuite name="Project Unit Test Suite">
-            <directory>src/Tr/*Bundle/Tests/Unit</directory>
+            <directory>src/*Bundle/Tests/Unit</directory>
         </testsuite>
     </testsuites>
 
     <testsuites>
         <testsuite name="Project Functional Test Suite">
-            <directory>src/Tr/*Bundle/Tests/Functional</directory>
+            <directory>src/*Bundle/Tests/Functional</directory>
         </testsuite>
     </testsuites>
 

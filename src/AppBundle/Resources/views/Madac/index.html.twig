@@ -68,58 +68,84 @@
         </form>
     </div>
 
-    <div class="ui center aligned container">
+    <div id="measurements-list" class="ui center aligned container">
         <h4 class="ui large header">Scan log</h4>
+        <table class="ui single line table">
+            <thead>
+            <tr>
+                <th>Barcode</th>
+                <th>Width</th>
+                <th>Length</th>
+                <th>Height</th>
+                <th>Volume</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>John Lilki</td>
+                <td>September 14, 2013</td>
+                <td>jhlilk22@yahoo.com</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            </tbody>
+        </table>
+        {#<div id="measurements-list" class="ui divided measurements log large list">#}
+            {#<div class="measurement item">#}
+                {#<img class="left floated image" src="./images/box.png">#}
+                {#<div class="left floated barcode content">#}
+                    {#<div class="header">Snickerdoodle</div>#}
+                    {#Barcode#}
+                {#</div>#}
+                {#<div class="left floated width content">#}
+                    {#<div class="header">26.4cm</div>#}
+                    {#Width#}
+                {#</div>#}
+                {#<div class="left floated length content">#}
+                    {#<div class="header">25.7cm</div>#}
+                    {#Length#}
+                {#</div>#}
+                {#<div class="left floated height content">#}
+                    {#<div class="header">69.47cm</div>#}
+                    {#Height#}
+                {#</div>#}
+                {#<div class="left floated volume content">#}
+                    {#<div class="header">69.47cm</div>#}
+                    {#Volume#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="measurement item">#}
+                {#<img class="left floated image" src="./images/box.png">#}
+                {#<div class="left floated barcode content">#}
+                    {#<div class="header">Snickerdoodle</div>#}
+                    {#Barcode#}
+                {#</div>#}
+                {#<div class="left floated width content">#}
+                    {#<div class="header">26.4cm</div>#}
+                    {#Width#}
+                {#</div>#}
+                {#<div class="left floated length content">#}
+                    {#<div class="header">25.7cm</div>#}
+                    {#Length#}
+                {#</div>#}
+                {#<div class="left floated height content">#}
+                    {#<div class="header">69.47cm</div>#}
+                    {#Height#}
+                {#</div>#}
+                {#<div class="left floated volume content">#}
+                    {#<div class="header">69.47cm</div>#}
+                    {#Volume#}
+                {#</div>#}
+            {#</div>#}
 
-        <div id="measurements-list" class="ui divided measurements log large list">
-            <div class="measurement item">
-                <img class="left floated image" src="./images/box.png">
-                <div class="left floated barcode content">
-                    <div class="header">Snickerdoodle</div>
-                    Barcode
-                </div>
-                <div class="left floated width content">
-                    <div class="header">26.4cm</div>
-                    Width
-                </div>
-                <div class="left floated length content">
-                    <div class="header">25.7cm</div>
-                    Length
-                </div>
-                <div class="left floated height content">
-                    <div class="header">69.47cm</div>
-                    Height
-                </div>
-                <div class="left floated volume content">
-                    <div class="header">69.47cm</div>
-                    Volume
-                </div>
-            </div>
-            <div class="measurement item">
-                <img class="left floated image" src="./images/box.png">
-                <div class="left floated barcode content">
-                    <div class="header">Snickerdoodle</div>
-                    Barcode
-                </div>
-                <div class="left floated width content">
-                    <div class="header">26.4cm</div>
-                    Width
-                </div>
-                <div class="left floated length content">
-                    <div class="header">25.7cm</div>
-                    Length
-                </div>
-                <div class="left floated height content">
-                    <div class="header">69.47cm</div>
-                    Height
-                </div>
-                <div class="left floated volume content">
-                    <div class="header">69.47cm</div>
-                    Volume
-                </div>
-            </div>
-
-        </div>
+        {#</div>#}
     </div>
 
     <div id="output"></div>

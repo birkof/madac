@@ -24,7 +24,6 @@ services:
             - mysql
         volumes:
             - ./:/var/www/symfony
-            - ./.docker/root/.ssh:/root/.ssh
             - ./var/logs/nginx:/var/log/nginx
             - ./var/logs/php-fpm:/var/log/php7
         working_dir: /var/www/symfony

@@ -1,3 +1,8 @@
+/**
+*   EVA - Electronic Volume Analyzer.
+*
+*           by MADAC Team for eMAG Hackaton 2016.
+*/
 #include <Arduino.h>
 #include <ArduinoJson.h>
 #include <ESP8266WiFi.h>
@@ -8,23 +13,23 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 
 #define USE_SERIAL Serial1
 
-#define ECHO_PIN1     5//D1
+#define ECHO_PIN1     5//D1 - L1
 #define TRIGGER_PIN1  4//D2
 
-#define ECHO_PIN2     0//D3
+#define ECHO_PIN2     0//D3 - W1
 #define TRIGGER_PIN2  2//D4
 
-#define ECHO_PIN3     14//D5
+#define ECHO_PIN3     14//D5 - L2
 #define TRIGGER_PIN3  12//D6
 
-#define ECHO_PIN4     13//D7
+#define ECHO_PIN4     13//D7 - W2
 #define TRIGGER_PIN4  15//D8
 
-#define ECHO_PIN5     16//D0
+#define ECHO_PIN5     16//D0 - H
 #define TRIGGER_PIN5  15//D8
 
-const char* ssid     = "emag.net";
-const char* password = "<aici e parola de la emag.net>";
+const char* ssid     = "ssid";
+const char* password = "********";
 
 long Distance(long time)
 {
@@ -39,7 +44,7 @@ long Distance(long time)
     return DistanceCalc;                    // return calculated value
 }
 
-long getSonicSensorData(uint8_t trigger, uint8_t echo) {
+long getSonicSensorData(uint8_t trigger, uint8_t echo, String which) {
   long duration, distance;
 
   digitalWrite(trigger, LOW);
@@ -54,7 +59,7 @@ long getSonicSensorData(uint8_t trigger, uint8_t echo) {
   distance = Distance(duration);
 
   Serial.print("Sensor ");
-  Serial.print(trigger);
+  Serial.print(which);
   Serial.print(" -> ");
   Serial.println(distance);
 
@@ -66,20 +71,20 @@ char* getJsonDataFromSensors() {
 
       JsonObject& object = jsonBuffer.createObject();
 
-      object.set("sens_length_init", 148);
-      object.set("sens_length_1", getSonicSensorData(TRIGGER_PIN1, ECHO_PIN1));
-      delay(100);
-      object.set("sens_length_2", getSonicSensorData(TRIGGER_PIN2, ECHO_PIN2));
-      delay(100);
+      //object.set("sens_length_init", 148);
+      object.set("sens_length_1", getSonicSensorData(TRIGGER_PIN1, ECHO_PIN1, "L1"));
+      delay(250);
+      object.set("sens_length_2", getSonicSensorData(TRIGGER_PIN2, ECHO_PIN2, "W1"));
+      delay(2500);
 
-      object.set("sens_width_init", 98);
-      object.set("sens_width_1", getSonicSensorData(TRIGGER_PIN3, ECHO_PIN3));
-      delay(100);
-      object.set("sens_width_2", getSonicSensorData(TRIGGER_PIN4, ECHO_PIN4));
-      delay(100);
+      //object.set("sens_width_init", 98);
+      object.set("sens_width_1", getSonicSensorData(TRIGGER_PIN3, ECHO_PIN3, "L2"));
+      delay(250);
+      object.set("sens_width_2", getSonicSensorData(TRIGGER_PIN4, ECHO_PIN4, "W2"));
+      delay(250);
 
-      object.set("sens_height_init", 100);
-      object.set("sens_height_1", getSonicSensorData(TRIGGER_PIN5, ECHO_PIN5));
+      //object.set("sens_height_init", 100);
+      object.set("sens_height_1", getSonicSensorData(TRIGGER_PIN5, ECHO_PIN5, "H"));
       
       char json[256];
       object.printTo(json, sizeof(json));
@@ -178,7 +183,6 @@ void setup() {
     pinMode(TRIGGER_PIN5, OUTPUT);
     pinMode(ECHO_PIN5, INPUT);
 }
-
 
 void loop() {
     delay(1000);

@@ -1,0 +1,40 @@
+version: '2'
+services:
+    mysql:
+        container_name: eva-mysql
+        image: mysql:latest
+        ports:
+            - 127.0.0.100:3306:3306
+        volumes:
+            - ./var/data/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+            MYSQL_ROOT_PASSWORD: ''
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: symfony
+    webserver:
+        image: birkof/docker-symfony
+        container_name: eva-webserver
+        command: service php7.0-fpm start
+        ports:
+            - 127.0.0.100:80:80
+            - 127.0.0.100:22:22
+        depends_on:
+            - mysql
+        volumes:
+            - ./:/var/www/symfony
+            - ./.docker/root/.ssh:/root/.ssh
+            - ./var/logs/nginx:/var/log/nginx
+            - ./var/logs/php-fpm:/var/log/php7
+        working_dir: /var/www/symfony
+        environment:
+            XDEBUG_ENABLE: 1
+            XDEBUG_IDEKEY: phpstorm-birkof
+            PHP_IDE_CONFIG: 'serverName=eva.network'
+            GIT_CONFIG_NAME: Daniel STANCU
+            GIT_CONFIG_EMAIL: daniel.stancu@me.com
+            SYMFONY_ENV: dev
+        privileged: true
+        extra_hosts:
+            - eva.network:127.0.0.1
